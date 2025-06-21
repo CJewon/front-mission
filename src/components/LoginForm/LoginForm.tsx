@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import styles from "./LoginForm.module.scss";
 import Button from "../Button/Button";
+import { userLogin } from "@/api/auth/userLogin";
 
 type LoginForm = {
   username: string;
@@ -18,8 +19,15 @@ export default function LoginForm() {
 
   const nav = useNavigate();
 
-  const onSubmit = (data: LoginForm) => {
-    console.log(data);
+  const onSubmit = async (data: LoginForm) => {
+    try {
+      await userLogin(data);
+
+      nav("/");
+    } catch (error) {
+      alert("로그인에 실패했습니다.");
+      console.log(error);
+    }
   };
 
   const handleLogoLink = () => {
@@ -27,12 +35,8 @@ export default function LoginForm() {
   };
   return (
     <div className={styles.LoginForm}>
-      <form
-        action=""
-        onSubmit={handleSubmit(onSubmit)}
-        className={styles.formContainer}
-      >
-        <div onClick={handleLogoLink}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
+        <div onClick={handleLogoLink} className={styles.imgContainer}>
           <img src="" alt="회사 로고" />
         </div>
         <Input

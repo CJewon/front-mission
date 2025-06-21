@@ -32,6 +32,11 @@
   }
 }
 
+.imgContainer {
+  display: flex;
+  justify-content: center;
+}
+
 img {
   width: 120px;
   margin: 0 auto;
