@@ -1,0 +1,61 @@
+@use "../../styles/mixins" as mixins;
+
+.LoginForm {
+  @include mixins.flex-center;
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  border-radius: 12px;
+  background-color: antiquewhite;
+  box-sizing: border-box;
+
+  @media (min-width: 768px) {
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 500px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 600px;
+  }
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (min-width: 768px) {
+    gap: 20px;
+  }
+}
+
+img {
+  width: 120px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    width: 140px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 160px;
+  }
+}
+
+button {
+  height: 40px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4a90e2;
+  color: white;
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    height: 44px;
+    font-size: 16px;
+  }
+}
