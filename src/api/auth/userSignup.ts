@@ -7,8 +7,13 @@ interface SignupProps {
   confirmPassword: string;
 }
 
-export async function Signup(data: SignupProps) {
-  const response = await axiosClientHelper.post("/auth/signup", data);
+export async function userSignup(data: SignupProps) {
+  console.log(data);
+  const response = await axiosClientHelper.post("/auth/signup", data, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
   return response.data;
 }

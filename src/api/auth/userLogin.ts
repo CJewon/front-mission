@@ -19,5 +19,10 @@ export async function userLogin({
     password,
   });
 
+  const { accessToken, refreshToken } = response.data;
+
+  localStorage.setItem("accessToken", accessToken);
+  localStorage.setItem("refreshToken", refreshToken);
+
   return response.data;
 }

@@ -2,7 +2,7 @@ import { userRefresh } from "@/api/auth/userRefresh";
 import axios from "axios";
 
 const axiosClientHelper = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: "/",
   headers: {
     "Content-Type": "application/json",
   },
@@ -31,6 +31,10 @@ axiosClientHelper.interceptors.response.use(
     if (!response) {
       alert("네트워크 에러: 서버가 응답하지 않습니다.");
       return Promise.reject(error);
+    }
+
+    if (response.status === 400) {
+      console.log(response);
     }
 
     if (response.status === 401 && !originalRequest._retry) {

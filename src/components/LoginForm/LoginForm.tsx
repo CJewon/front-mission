@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./LoginForm.module.scss";
 import Button from "../Button/Button";
 import { userLogin } from "@/api/auth/userLogin";
+import { EMAIL_REGEX } from "@/constants/regex";
 
 type LoginForm = {
   username: string;
@@ -37,7 +38,7 @@ export default function LoginForm() {
     <div className={styles.LoginForm}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
         <div onClick={handleLogoLink} className={styles.imgContainer}>
-          <img src="" alt="회사 로고" />
+          <img src={undefined} alt="회사 로고" />
         </div>
         <Input
           type="text"
@@ -45,7 +46,7 @@ export default function LoginForm() {
           {...register("username", {
             required: "아이디를 입력해주세요.",
             pattern: {
-              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              value: EMAIL_REGEX,
               message: "이메일 형식으로 작성해주세요",
             },
           })}
