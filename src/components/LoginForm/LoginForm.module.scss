@@ -1,7 +1,9 @@
 @use "../../styles/mixins" as mixins;
+@use "../../styles/variable.scss" as media;
 
 .LoginForm {
   @include mixins.flex-center;
+  flex-direction: column;
   width: 100%;
   max-width: 400px;
   padding: 24px;
@@ -9,48 +11,51 @@
   background-color: antiquewhite;
   box-sizing: border-box;
 
-  @media (min-width: 768px) {
+  @media (min-width: media.$tablet) {
     padding: 40px;
     border-radius: 16px;
     max-width: 500px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: media.$pc) {
     max-width: 600px;
   }
 }
 
-.formContainer {
+.LoginForm .formContainer {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   width: 100%;
   box-sizing: border-box;
-
-  @media (min-width: 768px) {
-    gap: 20px;
-  }
+  padding-bottom: 16px;
 }
 
-.imgContainer {
+.LoginForm .imgContainer {
   display: flex;
   justify-content: center;
 }
 
-img {
+.LoginForm .imgContainer img {
   width: 120px;
   margin: 0 auto;
+  cursor: pointer;
 
-  @media (min-width: 768px) {
+  @media (min-width: media.$tablet) {
     width: 140px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: media.$tablet) {
     width: 160px;
   }
 }
 
-button {
+.LoginForm .formContainer .errorContainer .errorMessage {
+  font-size: 12px;
+  color: #d93025;
+}
+
+.LoginForm button {
   height: 40px;
   font-size: 14px;
   border: none;
@@ -59,8 +64,24 @@ button {
   color: white;
   cursor: pointer;
 
-  @media (min-width: 768px) {
+  @media (min-width: media.$tablet) {
     height: 44px;
     font-size: 16px;
   }
+}
+
+.LoginForm .linkContainer {
+  display: flex;
+  gap: 8px;
+
+  font-size: 12px;
+
+  @media (min-width: media.$tablet) {
+    font-size: 16px;
+  }
+}
+
+.LoginForm .linkContainer .signupLink {
+  cursor: pointer;
+  color: #4a90e2;
 }

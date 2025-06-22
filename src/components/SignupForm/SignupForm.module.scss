@@ -1,0 +1,87 @@
+@use "../../styles/mixins" as mixins;
+@use "../../styles//variable.scss" as media;
+
+.SignupForm {
+  @include mixins.flex-center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  border-radius: 12px;
+  background-color: antiquewhite;
+  box-sizing: border-box;
+
+  @media (min-width: media.$tablet) {
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 500px;
+  }
+
+  @media (min-width: media.$pc) {
+    max-width: 600px;
+  }
+}
+
+.SignupForm .formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 16px;
+}
+
+.SignupForm .imgContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.SignupForm .imgContainer img {
+  width: 120px;
+  margin: 0 auto;
+  cursor: pointer;
+
+  @media (min-width: media.$tablet) {
+    width: 140px;
+  }
+
+  @media (min-width: media.$pc) {
+    width: 160px;
+  }
+}
+
+.SignupForm .formContainer .errorContainer .errorMessage {
+  font-size: 12px;
+  color: #d93025;
+}
+
+.SignupForm button {
+  height: 40px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4a90e2;
+  color: white;
+  cursor: pointer;
+
+  @media (min-width: media.$tablet) {
+    height: 44px;
+    font-size: 16px;
+  }
+}
+
+.SignupForm .linkContainer {
+  display: flex;
+  gap: 8px;
+
+  font-size: 12px;
+
+  @media (min-width: media.$tablet) {
+    font-size: 16px;
+  }
+}
+
+.SignupForm .linkContainer .loginLink {
+  cursor: pointer;
+  color: #4a90e2;
+}

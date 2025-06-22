@@ -34,6 +34,11 @@ export default function LoginForm() {
   const handleLogoLink = () => {
     nav("/");
   };
+
+  const handleGoToSignup = () => {
+    nav("/signup");
+  };
+
   return (
     <div className={styles.LoginForm}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
@@ -51,7 +56,13 @@ export default function LoginForm() {
             },
           })}
         ></Input>
-        {errors.username && <p>{errors.username.message}</p>}
+        <div className={styles.errorContainer}>
+          {errors.username ? (
+            <p className={styles.errorMessage}>{errors.username.message}</p>
+          ) : (
+            <p>&nbsp;</p>
+          )}
+        </div>
         <Input
           type="password"
           placeholder="비밀번호를 입력하세요."
@@ -59,9 +70,21 @@ export default function LoginForm() {
             required: "비밀번호를 입력해주세요.",
           })}
         ></Input>
-        {errors.password && <p>{errors.password.message}</p>}
+        <div className={styles.errorContainer}>
+          {errors.password ? (
+            <p className={styles.errorMessage}>{errors.password.message}</p>
+          ) : (
+            <p>&nbsp;</p>
+          )}
+        </div>
         <Button text="로그인" type="submit"></Button>
       </form>
+      <div className={styles.linkContainer}>
+        <p>회원이 아니신가요?</p>
+        <p onClick={handleGoToSignup} className={styles.signupLink}>
+          회원가입 하러가기
+        </p>
+      </div>
     </div>
   );
 }

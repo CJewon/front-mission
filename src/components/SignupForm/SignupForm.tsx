@@ -3,6 +3,8 @@ import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { EMAIL_REGEX, PASSWORD_REGEX } from "@/constants/regex";
 import { userSignup } from "@/api/auth/userSignup";
+import { useNavigate } from "react-router-dom";
+import styles from "./SignupForm.module.scss";
 
 type SignupForm = {
   username: string;
@@ -19,24 +21,34 @@ export default function SignupForm() {
     formState: { errors },
   } = useForm<SignupForm>();
 
+  const nav = useNavigate();
+
   const password = watch("password");
 
   const onSubmit = async (data: SignupForm) => {
     try {
-      const response = await userSignup(data);
-      console.log(response);
+      await userSignup(data);
+      nav("/login");
     } catch (error) {
       console.error("회원가입 실패 : ", error);
     }
   };
+
+  const handleGoToLogin = () => {
+    nav("/login");
+  };
+
+  const handleLogoLink = () => {
+    nav("/");
+  };
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <img src={undefined} alt="회사 로고" />
+    <div className={styles.SignupForm}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
+        <div className={styles.imgContainer}>
+          <img src={undefined} alt="회사 로고" onClick={handleLogoLink} />
         </div>
         <Input
-          type="email"
+          type="text"
           placeholder="이메일을 입력해주세요"
           {...register("username", {
             required: "아이디를 입력해주세요",
@@ -46,13 +58,25 @@ export default function SignupForm() {
             },
           })}
         ></Input>
-        {errors.username && <p>{errors.username.message}</p>}
+        <div className={styles.errorContainer}>
+          {errors.username ? (
+            <p className={styles.errorMessage}>{errors.username.message}</p>
+          ) : (
+            <p>&nbsp;</p>
+          )}
+        </div>
         <Input
           type="text"
           placeholder="이름을 입력해주세요"
           {...register("name", { required: "이름을 입력해주세요" })}
         ></Input>
-        {errors.name && <p>{errors.name.message}</p>}
+        <div className={styles.errorContainer}>
+          {errors.name ? (
+            <p className={styles.errorMessage}>{errors.name.message}</p>
+          ) : (
+            <p>&nbsp;</p>
+          )}
+        </div>
         <Input
           type="password"
           placeholder="비밀번호를 입력해주세요"
@@ -65,7 +89,13 @@ export default function SignupForm() {
             },
           })}
         ></Input>
-        {errors.password && <p>{errors.password.message}</p>}
+        <div className={styles.errorContainer}>
+          {errors.password ? (
+            <p className={styles.errorMessage}>{errors.password.message}</p>
+          ) : (
+            <p>&nbsp;</p>
+          )}
+        </div>
         <Input
           type="password"
           placeholder="비밀번호를 다시 한번 입력해주세요"
@@ -75,9 +105,23 @@ export default function SignupForm() {
               value === password || "비밀번호가 일치하지 않습니다.",
           })}
         ></Input>
-        {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+        <div className={styles.errorContainer}>
+          {errors.confirmPassword ? (
+            <p className={styles.errorMessage}>
+              {errors.confirmPassword.message}
+            </p>
+          ) : (
+            <p>&nbsp;</p>
+          )}
+        </div>
         <Button text="회원가입" type="submit"></Button>
       </form>
+      <div className={styles.linkContainer}>
+        <p>이미 회원이신가요?</p>
+        <p onClick={handleGoToLogin} className={styles.loginLink}>
+          로그인 하러가기
+        </p>
+      </div>
     </div>
   );
 }

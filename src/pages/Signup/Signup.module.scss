@@ -1,0 +1,6 @@
+@use "../../styles/mixins" as mixins;
+
+.Signup {
+  @include mixins.flex-center;
+  height: 100vh;
+}
