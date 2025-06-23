@@ -1,6 +1,6 @@
 import { isloggedIn } from "@/utils/auth/auth";
 import styles from "./Header.module.scss";
-import { useNavigate } from "react-router-dom";
+import { createSearchParams, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const nav = useNavigate();
@@ -27,7 +27,13 @@ export default function Header() {
 
   const handleBoradLink = () => {
     if (localStorage.getItem("accessToken")) {
-      nav("/boards");
+      nav({
+        pathname: "/boards",
+        search: createSearchParams({
+          page: "1",
+          size: "10",
+        }).toString(),
+      });
     } else {
       nav("/login");
     }

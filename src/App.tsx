@@ -5,6 +5,7 @@ import SignUp from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 import Main from "./pages/Main/Main";
 import Layout from "./layout/Layout";
+import BoardItem from "./pages/BoardItem/BoardItem";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/signup" element={<SignUp></SignUp>}></Route>
           <Route path="/boards" element={<Boards></Boards>}></Route>
+          <Route path="/boards/:id" element={<BoardItem></BoardItem>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

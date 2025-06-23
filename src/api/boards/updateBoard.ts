@@ -1,12 +1,10 @@
-// src/api/boards/updatePost.ts
-
 import axiosClientHelper from "@/utils/network/axiosClientHelper";
 
 type UpdatePostFormData = {
-  id: number; // 게시글 ID
+  id: number;
   title: string;
   content: string;
-  category: "NOTICE" | "FREE" | "QNA"; // 서버에 정의된 카테고리
+  category: "NOTICE" | "FREE" | "QNA";
   file?: File | null;
 };
 

@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./BoardItem.module.scss";
 import { getBoard } from "@/api/boards/getBoard";
-
-type BoardItemProps = {
-  id: number;
-};
+import { useParams } from "react-router-dom";
 
 type Board = {
   id: number;
@@ -15,13 +12,16 @@ type Board = {
   createdAt: string;
 };
 
-export default function BoardItem({ id }: BoardItemProps) {
+export default function BoardItem() {
+  const { id } = useParams();
   const [item, setItem] = useState<Board | null>(null);
 
   useEffect(() => {
+    if (!id) return;
     const getItem = async () => {
       try {
-        const data = await getBoard(id);
+        const data = await getBoard(Number(id));
+        console.log(data);
         setItem(data);
       } catch (error) {
         console.error(error);

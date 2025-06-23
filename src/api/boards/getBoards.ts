@@ -2,12 +2,12 @@ import axiosClientHelper from "@/utils/network/axiosClientHelper";
 
 interface GetBoardsProps {
   page?: number;
-  offset?: number;
+  size?: number;
 }
 
-export async function getBoards({ page = 0, offset = 10 }: GetBoardsProps) {
+export async function getBoards({ page = 0, size = 10 }: GetBoardsProps) {
   const response = await axiosClientHelper.get("/boards", {
-    params: { page, offset },
+    params: { page, size },
   });
 
   return response.data;

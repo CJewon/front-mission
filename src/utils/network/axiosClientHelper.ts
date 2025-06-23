@@ -2,7 +2,7 @@ import { userRefresh } from "@/api/auth/userRefresh";
 import axios from "axios";
 
 const axiosClientHelper = axios.create({
-  baseURL: "/",
+  baseURL: import.meta.env.VITE_API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
