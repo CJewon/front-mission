@@ -1,0 +1,7 @@
+@use "../../styles/mixins" as mixins;
+
+.Main {
+  @include mixins.flex-center;
+  margin-top: 60px;
+  height: calc(100vh - 60px);
+}

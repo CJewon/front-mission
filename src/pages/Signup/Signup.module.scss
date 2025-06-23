@@ -2,5 +2,6 @@
 
 .Signup {
   @include mixins.flex-center;
-  height: 100vh;
+  height: calc(100vh - 60px);
+  margin-top: 60px;
 }
