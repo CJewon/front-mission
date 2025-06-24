@@ -1,54 +1,32 @@
-# React + TypeScript + Vite
+# 회사 게시판글(Front-mission)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 참고사항
 
-Currently, two official plugins are available:
+1. 회사로고는 이미지를 따로 사용하지 않아 alt 설정이 나옵니다.
+2. API문서에서는 `글 목록 조회`라고해서 모든 사용자가 올린 글을 카테고리 별로 분류하여 렌더링하게 만들어야한다고 생각했으나 `Bearer Token`값을 필수로 입력하면 해당 토큰값을 가진 사용자의 글만 조회가 됩니다. 해당 부분은 제가 미흡하여 로직을 잘못 만들었을수도 있습니다.
+   현재 만든 부분은 `현재 로그인한 사용자가 작성한 게시글을 기준`으로 만들었습니다.
+3. access 토큰이 만료되면 refresh 토큰을 이용하여 토큰을 재발급을 해야하는데 cors 에러가 가장 먼저 발생하여 이후 제역량이 부족해 처리를 원활하게 하지 못하여 재발급 로직을 구현하지 못하였습니다. access 토큰이 만료되면 에러 발생이 잦을 수 있는 점 양해부탁드립니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+   ***
 
-## Expanding the ESLint configuration
+### 실행하기 전 주의사항
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. .env 파일은 gitigore 설정에 포함하지 않았기 때문에 따로 만드실 필요가 없습니다.
+2. 개발환경을 시작하기 앞서 터미널에서 해야하는 부분은 다음과 같습니다.
+   ```bash
+   npm install
+   npm run dev
+   ```
+3. vercel를 활용하여 배포를 한 상태입니다. 배포링크는 아래와 같습니다
+   https://front-mission-rhuph2umq-cjewons-projects.vercel.app
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+4. 테스트용 아이디는 아래와 같습니다.
+   ```bash
+   donkey0103@naver.com
+   3636914dnjs!
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+작업을 마치며...
+개인적으로 아쉬운 부분이 많았던 것 같습니다. 프로젝트 파일 구조부터 해서 간단한 최적화 등등 .. 간단한 프로젝트였지만 미흡한 부분을 알 수 있던 점도 있었기에 유익한 시간이였습니다. 이런 흔치 않은 기회를 주셔서 감사합니다. :)
