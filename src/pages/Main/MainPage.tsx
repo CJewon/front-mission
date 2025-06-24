@@ -1,6 +1,6 @@
-import styles from "./Main.module.scss";
+import styles from "./MainPage.module.scss";
 
-export default function Main() {
+export default function MainPage() {
   return (
     <div className={styles.Main}>
       어서오세요 반갑습니다. <br />

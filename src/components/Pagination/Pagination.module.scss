@@ -1,7 +1,7 @@
+@use "../../styles/mixins" as mixins;
+
 .Pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include mixins.flex-center;
   margin: 2rem 0;
   font-family: "Actor", sans-serif;
 

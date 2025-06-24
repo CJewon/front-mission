@@ -4,7 +4,7 @@ type UpdatePostFormData = {
   id: number;
   title: string;
   content: string;
-  category: "NOTICE" | "FREE" | "QNA";
+  category: "NOTICE" | "FREE" | "QNA" | "ETC";
   file?: File | null;
 };
 

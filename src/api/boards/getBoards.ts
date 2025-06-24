@@ -5,7 +5,7 @@ interface GetBoardsProps {
   size?: number;
 }
 
-export async function getBoards({ page = 0, size = 10 }: GetBoardsProps) {
+export async function getBoards({ page = 0, size = 5 }: GetBoardsProps) {
   const response = await axiosClientHelper.get("/boards", {
     params: { page, size },
   });

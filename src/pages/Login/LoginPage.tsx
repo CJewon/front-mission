@@ -1,7 +1,7 @@
 import LoginForm from "@/components/LoginForm/LoginForm";
-import styles from "./Login.module.scss";
+import styles from "./LoginPage.module.scss";
 
-export default function Login() {
+export default function LoginPage() {
   return (
     <div className={styles.Login}>
       <LoginForm></LoginForm>
