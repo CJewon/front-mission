@@ -82,6 +82,7 @@ export default function SignupForm() {
           placeholder="비밀번호를 입력해주세요"
           {...register("password", {
             required: "비밀번호를 입력해주세요",
+            minLength: 8,
             pattern: {
               value: PASSWORD_REGEX,
               message:
