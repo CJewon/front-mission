@@ -18,6 +18,7 @@
    npm run dev
    ```
 3. vercel를 활용하여 배포를 한 상태입니다. 배포링크는 아래와 같습니다
+
    https://front-mission-rhuph2umq-cjewons-projects.vercel.app
 
 4. 테스트용 아이디는 아래와 같습니다.
