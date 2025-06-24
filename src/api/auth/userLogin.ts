@@ -23,6 +23,7 @@ export async function userLogin({
 
   localStorage.setItem("accessToken", accessToken);
   localStorage.setItem("refreshToken", refreshToken);
+  localStorage.setItem("user", JSON.stringify({ username }));
 
   return response.data;
 }

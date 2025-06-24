@@ -6,9 +6,11 @@ export default function Header() {
   const nav = useNavigate();
   const loggedIn = isloggedIn();
 
+  const user = JSON.parse(localStorage.getItem("user") || "null");
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
+    localStorage.removeItem("user");
 
     nav("/login");
   };
@@ -54,8 +56,11 @@ export default function Header() {
       <div className={styles.loginContainer}>
         {loggedIn ? (
           <>
-            <div className={styles.logoutButton} onClick={handleLogout}>
-              로그아웃
+            <div className={styles.userInfo}>
+              <span>{user.username}님</span>
+              <div className={styles.logoutButton} onClick={handleLogout}>
+                로그아웃
+              </div>
             </div>
           </>
         ) : (
